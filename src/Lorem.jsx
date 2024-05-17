@@ -1,6 +1,6 @@
 export default function Lorem() {
    return (
-      <p style={{ width: '' }}>
+      <p style={{ width: '' }} className='flashing-element'>
          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
          Proin luctus ullamcorper diam non facilisis. Sed
          consectetur felis dignissim consequat vehicula. Mauris

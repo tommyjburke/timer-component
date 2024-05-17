@@ -41,8 +41,12 @@ export default function Timer({
    return (
       <>
          {timer !== null && (
-            <div className='timerContainer'>
-               <div className='timerCircle'>{timer}</div>
+            <div className='flashing-element'>
+               <div className='timerContainer flashing-element'>
+                  <div className='timerCircle flashing-element'>
+                     {timer}
+                  </div>
+               </div>
             </div>
          )}
          <button onClick={() => playClick()}>PLAY</button>
