@@ -13,8 +13,10 @@ function App() {
    const [timerStarted, setTimerStarted] = useState(false)
    const [timeUp, setTimeUp] = useState(false)
    const [gameOver, setGameOver] = useState('')
+   const [isDisabled, setIsDisabled] = useState(false)
 
    const startTimer = () => {
+      setIsDisabled(true)
       if (!timerStarted) {
          setTimerComplete(false)
          setTimerStarted(true)
@@ -22,12 +24,14 @@ function App() {
       } else {
          setTimerStarted(false)
          setGameOver('')
+         setIsDisabled(false)
       }
    }
 
    const onTimeUp = () => {
       setTimerStarted(false)
       setGameOver('GAME OVER!')
+      setIsDisabled(false)
    }
 
    const handleDurationChange = (e) => {
@@ -44,16 +48,19 @@ function App() {
    return (
       <>
          <div>
-            <input
-               step={10}
-               min={10}
-               className='large-input'
-               type='number'
-               value={duration}
-               onChange={handleDurationChange}
-               placeholder='Enter duration in seconds'
-               onBlur={handleBlur}
-            />
+            {!isDisabled && (
+               <input
+                  step={10}
+                  min={10}
+                  className='large-input'
+                  type='number'
+                  value={duration}
+                  onChange={handleDurationChange}
+                  placeholder='Enter duration in seconds'
+                  onBlur={handleBlur}
+                  disabled={isDisabled}
+               />
+            )}
             {/* <div>
                <button onClick={startTimer}>Start Timer</button>
                {timerStarted && (
